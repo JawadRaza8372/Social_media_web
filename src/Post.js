@@ -44,22 +44,26 @@ function Post({avat,postimg,caption,username}) {
           <a  onDoubleClick={()=>{setlikeed("liked")}}>  <img style={{width:"100%",objectFit:"contain",borderBottom:"1px solid lightgrey",borderTop:"1px solid lightgrey"}} src={`${postimg}`} alt="pics"/>
           </a>
 
-            <div className="row justify-content-center pl-2 pr-4 pt-2">
-<div className="col col-11">
-{(likeed==="liked")?   <a  onClick={()=>{setlikeed("")}}><FavoriteIcon style={{color:"red",fontSize:"30"}}/></a>: <a  onClick={()=>{setlikeed("liked")}}><FavoriteBorderIcon style={{fontSize:"30"}}/></a>}
+          <div className="row">
+      <div className="col col-8">
+      {(likeed==="liked")?   <a  onClick={()=>{setlikeed("")}}><FavoriteIcon style={{color:"red",fontSize:"30"}}/></a>: <a  onClick={()=>{setlikeed("liked")}}><FavoriteBorderIcon style={{fontSize:"30"}}/></a>}
 <a  onClick={()=>{setOpen(true);console.log("clicked"+open)}}>
-<ChatOutlinedIcon style={{fontSize:"30"}}/></a>
-</div>
-<div className="col col-1">
-{
-    (saveed==="saved")?<a  onClick={()=>{setsaveed("")}}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></a>: <a  onClick={()=>{setsaveed("saved")}}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></a>
+<ChatOutlinedIcon style={{fontSize:"30"}}/></a></div>
+      <div className="col col-4">
+      <div style={{display:"flex",flexDirection:"row",float:"right"}}>
+     { (saveed==="saved")?<a  onClick={()=>{setsaveed("")}}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></a>: <a  onClick={()=>{setsaveed("saved")}}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></a>
 }
-</div>
-            </div>
-
-
-    <p style={{marginLeft:"10px"}}>739 likes</p>
-            <p style={{marginLeft:"10px"}}><strong>{username}:</strong> {caption}</p>
+      
+        </div></div></div>
+        <div className="row">
+      <div className="col col-12">
+      <p style={{fontSize:"12px"}}>739 likes</p>
+      </div>
+      </div>   
+      <div className="row justify-content-center">
+      <div className="col col-12">
+      <p><strong>{username}:</strong> {caption}</p>
+      </div></div>
             <Modal
 open={open}
 onClose={()=>{setOpen(false)}}

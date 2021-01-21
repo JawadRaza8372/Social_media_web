@@ -6,12 +6,12 @@ function PosterUserWthBtn({Data,title,subtitle}) {
     return (
         <div  className="col-8">
         <div style={{display:"flex",alignItems:"center"}} className="row mt-2 mb-2">
-        <div className="col-3">
+        <div className="col-3 mr-1">
         <Avatar style={{height:"50px",width:"50px",marginLeft:"5px"}}  src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt=""/>
         </div>
-<div style={{alignItems:"center",paddingTop:"10px",paddingBottom :"10px"}} className="col-7">
-    <h6>Name</h6>
-    <h7>description</h7>
+<div style={{alignItems:"center",paddingTop:"10px",paddingBottom :"10px"}} className="col-6">
+    <h6 style={{fontSize:"auto"}}>Name</h6>
+    <h7 style={{fontSize:"auto"}}>description</h7>
 </div>
   <div className="col-2">
 <a><BtTxtPic icon4="g"/></a>
