@@ -5,6 +5,7 @@ import PostScreen from "./PostScreen"
 import NavBar from "./NavBar";
 import PostFetching from "./PostFetching";
 import ProfilePage from "./ProfilePage"
+import Routesss from "./Routesss";
 function App() {
 
   const [Data, setData] = useState("");
@@ -35,9 +36,8 @@ function App() {
     
 
 
-    <NavBar suser={suser} Data={Data}/>
-    
-    <PostScreen/>
+    {/* <NavBar /> */}
+    <Routesss suser={suser} Data={Data}/>
     
     {/* <PostFetching/> */}
 {/* <ProfilePage/> */}

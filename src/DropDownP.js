@@ -23,7 +23,7 @@ function DropDownP({children,data}) {
             {children}
         </Dropdown.Toggle>
           <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1"><BtTxtPic text="Profile" icon1="g" /></Dropdown.Item>
+          <Dropdown.Item href="/Profile"><BtTxtPic text="Profile" icon1="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-1"><BtTxtPic text="Setting" icon2="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-2"><BtTxtPic text="Saved" icon3="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-3"><BtTxtPic text="Logout" icon4="g" /></Dropdown.Item>

@@ -11,7 +11,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Comment from "./Comment"
 import ModelP from "./ModelP"
 import DropdownP from "./DropDownP"
-
+import Notification from "./Notification"
+import Home from "./Home"
+import {NavLink} from "react-router-dom"
 function NavBar({suser,Data}) {
     const [open, setOpen] =useState(false);
     const [open2, setOpen2] =useState(false);
@@ -35,24 +37,7 @@ function NavBar({suser,Data}) {
 {/* model 4 notificationWala */}
 
     <ModelP openModel={open4} closeModel={()=>{setOpen4(false)}} >
-    <h1>open notifications</h1>
-<div style={{width:"250",height:"300px",overflowY:"scroll"}}>
-<Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/></div>
+<Notification/>
     </ModelP>
 
     <div className="app_header">
@@ -66,8 +51,8 @@ function NavBar({suser,Data}) {
           {(suser===null)?<><Button  onClick={()=>{setOpen(true)}}>Sign Up</Button>
       <Button  onClick={()=>{setOpen2(true)}}>Login</Button></>
       : <>
-      <a   onClick={()=>{setOpen(true);console.log("clicked"+open)}}>
-<HomeIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></a>
+      <NavLink to="/">
+<HomeIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></NavLink>
 
 <a   onClick={()=>{setOpen3(true)}}>
 <AddBoxIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></a>
@@ -77,6 +62,10 @@ function NavBar({suser,Data}) {
 <DropdownP>
 <Avatar style={{height:"32px",marginLeft:"5px"}}  src={`${Data.img}`} alt={`${Data.firstname}`}/>
 </DropdownP>
+
+
+
+
      </>
     }  
         </div></div></div></div></>

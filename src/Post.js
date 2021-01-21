@@ -2,13 +2,12 @@ import React,{useState} from 'react'
 import Avatar from "@material-ui/core/Avatar";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import SmsIcon from '@material-ui/icons/Sms';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
-import Comment from "./Comment"
-import Modal from "@material-ui/core/Modal"
 import BookmarkOutlinedIcon from '@material-ui/icons/BookmarkOutlined';
 import { makeStyles } from '@material-ui/core/styles';
+import ModelP from "./ModelP"
+import Notification from "./Notification"
 function getModalStyle() {
     const top = 50;
     const left = 50;
@@ -64,42 +63,17 @@ function Post({avat,postimg,caption,username}) {
       <div className="col col-12">
       <p><strong>{username}:</strong> {caption}</p>
       </div></div>
-            <Modal
-open={open}
-onClose={()=>{setOpen(false)}}
->
-   <div style={modalStyle} className={classes.paper}>
-<center>
-<div className="app_header">
-      <img className="app_headerImg" src="http://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo"/>
-    </div>
-    </center>
-    <br/>
-    <div style={{height:"200px",overflowY:"scroll"}}>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-    <Comment commentedusername="username" commentedcaption="caption"/>
-
-    </div>
-    <div style={{flexDirection:"row"}}>
+      <ModelP openModel={open} closeModel={()=>{setOpen(false)}} >
+<Notification/>
+<div style={{flexDirection:"row"}}>
     <input style={{width:'80%',marginRight:"10px"}}/>
     <a onClick={()=>{console.log("commented")}} className="btn btn-outline-success">Post</a>
     </div>
-    </div>
-</Modal>
+    </ModelP>
+          
+         
+    
+
 
         </div>
     )
