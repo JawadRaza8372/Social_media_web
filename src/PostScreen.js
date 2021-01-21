@@ -6,7 +6,7 @@ import PosterUserWthBtn from './PosterUserWthBtn'
 function PostScreen() {
     return (
        
-        <div className="col-10 mx-auto mt-4">
+        <div className="col-8 mx-auto mt-4">
             <div className="row justify-content-center">
            <div className="col col-10 col-xs-10 col-sm-10 col-lg-8 col-md-10 col-xl-8">
                <PostFetching/>
