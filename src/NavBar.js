@@ -11,6 +11,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import Comment from "./Comment"
 import ModelP from "./ModelP"
 import DropdownP from "./DropDownP"
+import {Navbar,Nav} from "react-bootstrap"
 import Notification from "./Notification"
 import Home from "./Home"
 import {NavLink} from "react-router-dom"
@@ -41,17 +42,19 @@ function NavBar({suser,Data}) {
     </ModelP>
 
     <div className="app_header">
-    <div className="row">
-      <div className="col col-8">
-      <img className="app_headerImg" src="http://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo"/>
-      </div>
-      <div className="col col-4">
-      <div style={{display:"flex",flexDirection:"row",float:"right"}}>
-
-          {(suser===null)?<><Button  onClick={()=>{setOpen(true)}}>Sign Up</Button>
-      <Button  onClick={()=>{setOpen2(true)}}>Login</Button></>
-      : <>
-      <NavLink to="/">
+  <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
+  <Navbar.Brand href="#home">
+  <img className="app_headerImg" 
+          src="http://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo"/>
+  </Navbar.Brand>
+  <Navbar.Toggle style={{color:"black"}} aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav">
+  <Nav className="ml-auto">
+   
+   {(suser===null)?<><Button  onClick={()=>{setOpen(true)}}>Sign Up</Button>
+     <Button  onClick={()=>{setOpen2(true)}}>Login</Button></>
+     : <>
+     <NavLink style={{color:"black"}} to="/">
 <HomeIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></NavLink>
 
 <a   onClick={()=>{setOpen3(true)}}>
@@ -66,9 +69,13 @@ function NavBar({suser,Data}) {
 
 
 
-     </>
-    }  
-        </div></div></div></div></>
+    </>
+   }  
+   </Nav>
+  </Navbar.Collapse>
+</Navbar>
+</div>
+        </>
     )
 }
 

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import BtTxtPic from "./BtTxtPic"
 import ModelP from './ModelP'
+import ParallelCard from './ParallelCard'
 import Post from './Post'
 function MiniPost() {
     const [open, setopen] = useState(false)
@@ -19,7 +20,7 @@ function MiniPost() {
 </a>
 </div>
 <ModelP openModel={open} closeModel={()=>{setopen(false)}}>
-<Post avat="https://www.filmibeat.com/ph-big/2019/07/ismart-shankar_156195627930.jpg" postimg="https://www.filmibeat.com/ph-big/2019/07/ismart-shankar_156195627930.jpg" username="username" caption="caption"/>
+<ParallelCard/>
 </ModelP>
 </>
     )

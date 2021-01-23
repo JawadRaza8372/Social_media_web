@@ -1,98 +1,70 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Avatar from "@material-ui/core/Avatar";
 import BtTxtPic from "./BtTxtPic";
-import MiniPost from "./MiniPost"
-function ProfilePage() {
+import MiniPost from "./MiniPost";
+import {db,auth} from "./FirebaseConfig"
+import {Navbar,Nav} from "react-bootstrap"
+import {NavLink} from "react-router-dom"
+import ParallelCard from './ParallelCard';
+function ProfilePage({user,Data}) {
     return (
-        <div className="col-6 mx-auto mt-4">
+        <div className="col-8 mx-auto mt-4">
          <div style={{display:"flex",alignItems:"center"}} className="row mt-2 mb-2">
-        <div className="col-3">
-        <Avatar style={{height:"150px",width:"150px",marginLeft:"5px"}}  src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt=""/>
+        <div className="col-xs-10 col-sm-10 col-md-6 col-xl-4 col-lg-4 order-1">
+        <Avatar style={{height:"120px",width:"120px",marginLeft:"5px"}}  src={`${Data.img}`} alt=""/>
         </div>
-<div style={{alignItems:"center"}} className="col-9">
+<div style={{alignItems:"center"}} className="col-xs-10 col-sm-10 col-md-6 col-lg-8 col-xl-8 order-2">
+
+<div className="row">
+   <div className="col">
+   <h5 style={{marginRight:"35px"}}>{Data.firstname} {Data.lastname}</h5>
+   </div>
+   <div className="col">
+   <p style={{marginRight:"35px"}}><NavLink to="/EditProfile" style={{cursor:"pointer"}} className="btn-outline-dark">Edit Profile</NavLink></p>
+   </div>
+   </div>
 
 
-<div style={{display:"flex",justifyItems:"center",flexDirection:"row"}}>
-    <h5 style={{marginRight:"35px"}}>Name</h5>
-    <p style={{marginRight:"35px"}}><a style={{cursor:"pointer"}} onClick={()=>{
-        console.log("edit profile")
-    }} className="btn-outline-dark">Edit Profile</a></p>
+    <div className="row">
+   <div className="col">
+   <p>Post</p>
+   </div> 
+   <div className="col">
+   <p>Followers</p>
+   </div> 
+   <div className="col">
+   <p>Following</p>
+   </div> 
+
 </div>
 
-    <div style={{display:"flex",justifyItems:"center",flexDirection:"row"}}>
-    <p style={{marginRight:"35px"}}>Post</p>
-    <p style={{marginRight:"35px"}}>Followers</p>
-    <p style={{marginRight:"35px"}}>Following</p>
-</div>
-
-    <h6>Email</h6>
+    <h6>{Data.email}</h6>
 </div>
         </div>
 
 
 
         <div  className="app_header2">
-        <div className="row justify-content-center">
-        <div className="col-6">
-    <div className="row justify-content-center">
-      <div className="col col-8">
-      <div style={{display:"flex",flexDirection:"row",float:"right"}}>
-
-      <a  style={{marginRight:"45px"}} onClick={()=>{console.log("clicked")}}>
-<BtTxtPic text="Posts" icon5="g"/>
-</a>
-
-<a   onClick={()=>{console.log("clicked2")}}>
-<BtTxtPic text="Saved" icon3="g"/>
-</a>
-</div></div></div></div></div></div>
+        <Navbar bg="white" variant="light">
+    <Nav className="mx-auto">
+      <Nav.Link href="#home"><BtTxtPic text="Posts" icon5="g"/></Nav.Link>
+      <Nav.Link href="#features"><BtTxtPic text="Saved" icon3="g"/></Nav.Link>
+    </Nav>
+  </Navbar>
+        </div>
 
 <div className="row mt-3">
-    <div className="col-4">
+    <div className="col-lg-4 col-xl-4 col-md-6 col-sm-10 col-xs-10">
         <MiniPost/>
     </div>
-    <div className="col-4">
+    <div className="col-lg-4 col-xl-4 col-md-6 col-sm-10 col-xs-10">
         <MiniPost/>
     </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    <div className="col-4">
-        <MiniPost/>
-    </div>
-    
-</div>
 
+    <div className="col-lg-4 col-xl-4 col-md-6 col-sm-10 col-xs-10">
+        <MiniPost/>
+    </div>
+</div>
 
         </div>
     )

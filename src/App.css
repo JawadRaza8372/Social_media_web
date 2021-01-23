@@ -4,14 +4,17 @@
 .app_header {
   background-color: white;
   object-fit: contain;
-  padding: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
   border-bottom: 1px solid lightgrey;
 }
 .app_header2 {
   background-color: white;
   object-fit: contain;
-  padding: 20px;
-  border: 1px solid lightgrey;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
 
 .overlay {
