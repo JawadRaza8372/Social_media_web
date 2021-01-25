@@ -22,7 +22,7 @@ function DropDownP({children,data}) {
         <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
             {children}
         </Dropdown.Toggle>
-          <Dropdown.Menu>
+          <Dropdown.Menu  align="left">
           <Dropdown.Item href="/Profile"><BtTxtPic text="Profile" icon1="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-1"><BtTxtPic text="Setting" icon2="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-2"><BtTxtPic text="Saved" icon3="g" /></Dropdown.Item>

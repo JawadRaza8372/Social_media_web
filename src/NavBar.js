@@ -42,6 +42,8 @@ function NavBar({suser,Data}) {
     </ModelP>
 
     <div className="app_header">
+    <div className="row justify-content-center">
+    <div className="col-10">
   <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
   <Navbar.Brand href="#home">
   <img className="app_headerImg" 
@@ -74,6 +76,8 @@ function NavBar({suser,Data}) {
    </Nav>
   </Navbar.Collapse>
 </Navbar>
+</div>
+</div>
 </div>
         </>
     )

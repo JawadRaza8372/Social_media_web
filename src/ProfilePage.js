@@ -2,10 +2,8 @@ import React,{useEffect,useState} from 'react'
 import Avatar from "@material-ui/core/Avatar";
 import BtTxtPic from "./BtTxtPic";
 import MiniPost from "./MiniPost";
-import {db,auth} from "./FirebaseConfig"
 import {Navbar,Nav} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
-import ParallelCard from './ParallelCard';
 function ProfilePage({user,Data}) {
     return (
         <div className="col-8 mx-auto mt-4">

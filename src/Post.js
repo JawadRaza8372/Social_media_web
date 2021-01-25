@@ -45,9 +45,10 @@ function Post({avat,postimg,caption,username}) {
 
           <div className="row">
       <div className="col col-8">
+      <div style={{display:"flex",flexDirection:"row",float:"left"}}>
       {(likeed==="liked")?   <a  onClick={()=>{setlikeed("")}}><FavoriteIcon style={{color:"red",fontSize:"30"}}/></a>: <a  onClick={()=>{setlikeed("liked")}}><FavoriteBorderIcon style={{fontSize:"30"}}/></a>}
 <a  onClick={()=>{setOpen(true);console.log("clicked"+open)}}>
-<ChatOutlinedIcon style={{fontSize:"30"}}/></a></div>
+<ChatOutlinedIcon style={{fontSize:"30"}}/></a></div></div>
       <div className="col col-4">
       <div style={{display:"flex",flexDirection:"row",float:"right"}}>
      { (saveed==="saved")?<a  onClick={()=>{setsaveed("")}}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></a>: <a  onClick={()=>{setsaveed("saved")}}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></a>
@@ -55,12 +56,12 @@ function Post({avat,postimg,caption,username}) {
       
         </div></div></div>
         <div className="row">
-      <div className="col col-12">
+      <div style={{display:"flex",flexDirection:"row",float:"left"}}>
       <p style={{fontSize:"12px"}}>739 likes</p>
       </div>
       </div>   
-      <div className="row justify-content-center">
-      <div className="col col-12">
+      <div className="row">
+      <div style={{display:"flex",flexDirection:"row",float:"left"}}>
       <p><strong>{username}:</strong> {caption}</p>
       </div></div>
       <ModelP openModel={open} closeModel={()=>{setOpen(false)}} >
