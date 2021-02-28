@@ -45,7 +45,7 @@ function NavBar({suser,Data}) {
     <div className="row justify-content-center">
     <div className="col-10">
   <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
-  <Navbar.Brand href="#home">
+  <Navbar.Brand href="/home">
   <img className="app_headerImg" 
           src="http://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo"/>
   </Navbar.Brand>

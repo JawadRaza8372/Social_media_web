@@ -2,13 +2,11 @@ import React from 'react'
 import Passwordupdate from "./Passwordupdate"
 import ProfilePhoto from './ProfilePhoto'
 import InfoUpdate from './InfoUpdate'
-function Content() {
+
+function Content({cont}) {
     return (
         <div>
-        {/* <Passwordupdate/> */}
-        {/* <ProfilePhoto/> */}
-        <InfoUpdate/>
-        </div>
+<h1>yo boy</h1>        </div>
     )
 }
 

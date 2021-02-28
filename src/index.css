@@ -93,3 +93,14 @@ form:hover {
   transform: scale(1.05, 1.05);
   font-family: "Hind", sans-serif;
 }
+.active_class {
+  color: #0d6efd !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+.navlinkclass {
+  color: gray;
+  text-decoration: none !important;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

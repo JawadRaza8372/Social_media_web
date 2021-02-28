@@ -18,7 +18,7 @@ function ProfilePage({user,Data}) {
    <h5 style={{marginRight:"35px"}}>{Data.firstname} {Data.lastname}</h5>
    </div>
    <div className="col">
-   <p style={{marginRight:"35px"}}><NavLink to="/EditProfile" style={{cursor:"pointer"}} className="btn-outline-dark">Edit Profile</NavLink></p>
+   <p style={{marginRight:"35px"}}><NavLink to="/editinfo" style={{cursor:"pointer"}} className="btn-outline-dark">Edit Profile</NavLink></p>
    </div>
    </div>
 

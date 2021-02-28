@@ -18,7 +18,6 @@ function App() {
             setuser(user.uid);
             db.collection("users").doc(uid).get().then((doc) => {
                 if (doc) {
-                    // console.log("Document data:", doc.data());
                     setData(doc.data());
                 } else {
                     console.log("No such document!");
@@ -33,16 +32,15 @@ function App() {
 
       
 },[]);     
+
   return (
     <div className="app">
     
 
 
-    {/* <NavBar /> */}
     <Routesss suser={suser} Data={Data}/>
     
-    {/* <PostFetching/> */}
-{/* <ProfilePage/> */}
+
 
 
     </div>
