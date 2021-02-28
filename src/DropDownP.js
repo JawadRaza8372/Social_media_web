@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import {Dropdown} from "react-bootstrap"
 import BtTxtPic from "./BtTxtPic"
+import {db,auth} from "./FirebaseConfig"
+
 function DropDownP({children,data}) {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <a
@@ -26,7 +28,7 @@ function DropDownP({children,data}) {
           <Dropdown.Item href="/Profile"><BtTxtPic text="Profile" icon1="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-1"><BtTxtPic text="Setting" icon2="g" /></Dropdown.Item>
             <Dropdown.Item href="#/action-2"><BtTxtPic text="Saved" icon3="g" /></Dropdown.Item>
-            <Dropdown.Item href="#/action-3"><BtTxtPic text="Logout" icon4="g" /></Dropdown.Item>
+            <Dropdown.Item onClick={()=>{auth.signOut();}}><BtTxtPic text="Logout" icon4="g" /></Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
     )

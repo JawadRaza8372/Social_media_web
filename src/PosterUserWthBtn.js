@@ -20,12 +20,11 @@ function PosterUserWthBtn() {
                 console.log("Error getting document:", error);
             });
         } else {
-            console.log("   ------datasave--error---");
+            console.log("datasave--error");
       }});
 
       
 },[]);     
-console.log(Data)
     return (
         <div  className="col-10">
         <div style={{display:"flex",alignItems:"center"}} className="row mt-2 mb-2">
@@ -37,7 +36,7 @@ console.log(Data)
     <p style={{fontSize:"auto"}}>{Data.email}</p>
 </div>
   <div className="col-2 ml-2">
-<a><BtTxtPic icon4="g"/></a>
+<a onClick={()=>{auth.signOut();}}><BtTxtPic  icon4="g"/></a>
   </div>
         </div>
         </div>

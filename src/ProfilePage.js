@@ -1,10 +1,10 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
 import Avatar from "@material-ui/core/Avatar";
 import BtTxtPic from "./BtTxtPic";
 import MiniPost from "./MiniPost";
 import {Navbar,Nav} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
-function ProfilePage({user,Data}) {
+function ProfilePage({Data}) {
     return (
         <div className="col-8 mx-auto mt-4">
          <div style={{display:"flex",alignItems:"center"}} className="row mt-2 mb-2">

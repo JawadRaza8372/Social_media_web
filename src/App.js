@@ -1,10 +1,6 @@
 import React,{useState,useEffect} from "react";
 import "./App.css";
 import {db,auth} from "./FirebaseConfig"
-import PostScreen from "./PostScreen"
-import NavBar from "./NavBar";
-import PostFetching from "./PostFetching";
-import ProfilePage from "./ProfilePage"
 import Routesss from "./Routesss";
 function App() {
 
