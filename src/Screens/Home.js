@@ -1,5 +1,5 @@
 import React from 'react'
-import PostScreen from "./PostScreen"
+import PostScreen from "./Components/PostScreen"
 function Home() {
     return (
         <PostScreen/>

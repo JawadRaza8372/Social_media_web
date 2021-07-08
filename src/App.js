@@ -1,8 +1,9 @@
-
 import React,{useState,useEffect} from "react";
 import "./App.css";
-import {db,auth} from "./FirebaseConfig"
-import Routesss from "./Routesss";
+import "./index.css";
+
+import {db,auth} from "./FirebaseConfig/FirebaseConfig"
+import Routesss from "./Navigation/Routesss";
 function App() {
 
   const [Data, setData] = useState("");

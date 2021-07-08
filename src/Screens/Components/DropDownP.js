@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.css";
 import {Dropdown} from "react-bootstrap"
 import BtTxtPic from "./BtTxtPic"
-import {db,auth} from "./FirebaseConfig"
+import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
 
 function DropDownP({children,data}) {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (

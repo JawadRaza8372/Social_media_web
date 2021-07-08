@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from "./NavBar"
-import EditProfile from "./EditProfile"
+import EditProfile from "../Screens/Components/EditProfile"
 import RoutesssLink from './RoutesssLink'
 import {useLocation} from "react-router-dom";
 function Routesss({suser,Data}) {

@@ -1,10 +1,10 @@
 import React from 'react'
 import {Route,Switch,Redirect} from "react-router-dom"
-import Home from "./Home"
-import ProfilePage from "./ProfilePage"
-import Passwordupdate from "./Passwordupdate"
-import ProfilePhoto from './ProfilePhoto'
-import InfoUpdate from './InfoUpdate'
+import Home from "../Screens/Home"
+import ProfilePage from "../Screens/ProfilePage"
+import Passwordupdate from "../Screens/Passwordupdate"
+import ProfilePhoto from '../Screens/ProfilePhoto'
+import InfoUpdate from '../Screens/InfoUpdate'
 function RoutesssLink({suser,Datas}) {
   
     return (

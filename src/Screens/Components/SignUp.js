@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react'
-import "./index.css";
 import FileUploader from 'react-firebase-file-uploader';
-import {storage,auth, db} from "./FirebaseConfig";
+import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
 function SignUp() {
     const [state, setstate] = useState({email:'',password:'',firstname:"",lastname:"",img:""});
     const [fs,setf]=useState(null);

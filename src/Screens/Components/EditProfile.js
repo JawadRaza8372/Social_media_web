@@ -1,7 +1,5 @@
 import React from 'react'
-import Menu from './Menu'
-import Content from "./Content"
-import NavBar from "./NavBar"
+import NavBar from "../../Navigation/NavBar"
 import {NavLink} from "react-router-dom"
 
 function EditProfile({suser,Data,children}) {

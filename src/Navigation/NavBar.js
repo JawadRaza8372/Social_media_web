@@ -1,19 +1,16 @@
 import React,{useState,useEffect} from "react";
-import "./App.css";
 import Avatar from "@material-ui/core/Avatar";
 import { Button } from "@material-ui/core";
-import SignUp from "./SignUp";
-import Login from "./Login";
-import UploadPost from "./UploadPost";
+import SignUp from "../Screens/Components/SignUp";
+import Login from "../Screens/Components/Login";
+import UploadPost from "../Screens/Components/UploadPost";
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import HomeIcon from '@material-ui/icons/Home';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import Comment from "./Comment"
-import ModelP from "./ModelP"
-import DropdownP from "./DropDownP"
+import ModelP from "../Screens/Components/ModelP"
+import DropdownP from "../Screens/Components/DropDownP"
 import {Navbar,Nav} from "react-bootstrap"
-import Notification from "./Notification"
-import Home from "./Home"
+import Notification from "../Screens/Components/Notification"
 import {NavLink} from "react-router-dom"
 function NavBar({suser,Data}) {
     const [open, setOpen] =useState(false);
@@ -51,7 +48,7 @@ function NavBar({suser,Data}) {
   </Navbar.Brand>
   <Navbar.Toggle style={{color:"black"}} aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
-  <Nav className="ml-auto">
+  <Nav style={{marginLeft:"auto"}}>
    
    {(suser===null)?<><Button  onClick={()=>{setOpen(true)}}>Sign Up</Button>
      <Button  onClick={()=>{setOpen2(true)}}>Login</Button></>

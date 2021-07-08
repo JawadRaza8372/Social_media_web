@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import "./App.css";
 import Modal from "@material-ui/core/Modal"
 import { makeStyles } from '@material-ui/core/styles';
 function getModalStyle() {

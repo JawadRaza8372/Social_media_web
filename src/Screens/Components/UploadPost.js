@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react'
-import "./index.css";
 import FileUploader from 'react-firebase-file-uploader';
-import {storage,auth, db} from "./FirebaseConfig";
+import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
 function UploadPost({userinfo}) {
     const [state, setstate] = useState({caption:'',img:""});
     const [fs,setf]=useState(null);

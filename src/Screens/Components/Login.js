@@ -1,8 +1,5 @@
-import React,{useEffect, useState} from 'react'
-import "./index.css";
-import FileUploader from 'react-firebase-file-uploader';
-import {storage,auth, db} from "./FirebaseConfig";
-import { setRef } from '@material-ui/core';
+import React,{useState} from 'react'
+import {auth} from "../../FirebaseConfig/FirebaseConfig";
 function Login() {
     const [state, setstate] = useState({email:'',password:''});
     const [suser,setuser]=useState(null);

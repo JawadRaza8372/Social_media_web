@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import Post from "./Post";
-import {db} from "./FirebaseConfig"
+import {db} from "../../FirebaseConfig/FirebaseConfig";
 
 function PostFetching() {
     const [posts2,setposts2]=useState("");

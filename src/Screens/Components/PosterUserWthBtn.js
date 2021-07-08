@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import {db,auth} from "./FirebaseConfig"
+import {auth, db} from "../../FirebaseConfig/FirebaseConfig";
 import Avatar from "@material-ui/core/Avatar";
 import BtTxtPic from './BtTxtPic';
 

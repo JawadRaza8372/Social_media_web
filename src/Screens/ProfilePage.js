@@ -1,7 +1,7 @@
 import React from 'react'
 import Avatar from "@material-ui/core/Avatar";
-import BtTxtPic from "./BtTxtPic";
-import MiniPost from "./MiniPost";
+import BtTxtPic from "./Components/BtTxtPic";
+import MiniPost from "./Components/MiniPost";
 import {Navbar,Nav} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
 function ProfilePage({Data}) {

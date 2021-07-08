@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import Avatar from "@material-ui/core/Avatar";
 import FileUploader from 'react-firebase-file-uploader';
-import {storage,auth, db} from "./FirebaseConfig";
-import ModelP from "./ModelP";
+import {storage,auth, db} from "../FirebaseConfig/FirebaseConfig";
+import ModelP from "./Components/ModelP";
 function ProfilePhoto() {
     const [state, setstate] = useState();
     const [open, setOpen] =useState(false);
