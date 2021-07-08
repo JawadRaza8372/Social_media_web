@@ -1,10 +1,11 @@
 import React,{useEffect, useState} from 'react'
 import FileUploader from 'react-firebase-file-uploader';
+import { useHistory } from 'react-router-dom';
 import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
 function SignUp() {
+  let location=useHistory()
     const [state, setstate] = useState({email:'',password:'',firstname:"",lastname:"",img:""});
     const [fs,setf]=useState(null);
-    const [suser,setuser]=useState(null);
     const handlein=(e)=>{
         const name=e.target.id;
         const value=e.target.value;
@@ -32,7 +33,6 @@ function SignUp() {
                         img:state.img
                     })
                 } else {
-                    setuser(null);
                     console.log("   ------datasave--error---");
               }});
             }
@@ -43,13 +43,15 @@ function SignUp() {
               console.log(errorCode+"   ------"+errorMessage)
             });
            
-            
+            location.push('/')
             }
            
             
                             
                            
 const handleUploadSuccess = filename => {
+  setf("pending");
+
                         storage.ref("images") 
                           .child(filename)
                           .getDownloadURL()
@@ -69,9 +71,7 @@ useEffect(()=>{
         if (user) {
           var uid = user.uid;
             console.log(uid);
-            setuser(user.uid);
         } else {
-            setuser(null);
             console.log("   ------datasave--error---");
       }});
 },[]);                      
@@ -99,14 +99,17 @@ useEffect(()=>{
               storage.ref("images")
             }
             onUploadStart = {null}
+            accept="image/*"
             onUploadError = {handleUploadError}
             onUploadSuccess = {handleUploadSuccess}
             onProgress = {null}
           /></div>
-          <p className="blacksimpletxt">Profile Picture Status:{(fs==="done")?"uploaded":null}</p>
-
+{ fs && <p className="blacksimpletxt mt-3 mb-3">Profile Picture Status{(fs==="done")?": uploaded":": pending"}</p>
+}
   <br/>
-  <button type="submit"  className="btn bttn btn-outline-primary">SignUp</button>
+  <button type="submit"  className="btn bttn btn-outline-primary mb-3">SignUp</button>
+  <p onClick={()=>location.push('/login')} style={{marginTop:"10px",cursor:"pointer"}}>Hve an acount !! Login</p>
+
 </form>
 
     )

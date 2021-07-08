@@ -1,10 +1,27 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import PostScreen from "./Components/PostScreen"
-function Home() {
-    return (
-        <PostScreen/>
-
-    )
+import {db} from "../FirebaseConfig/FirebaseConfig"
+function Home({user}) {
+    const [posts, setposts] = useState(null)
+    useEffect(()=>{
+        db.collection("posts").onSnapshot((snapshot)=>{
+            setposts(snapshot.docs.map(doc=>(({id:doc.id,post:doc.data()}))))
+          })
+        },[]);
+    let location=useHistory();
+    console.log(user)
+    if(user){
+        return (
+            <PostScreen post={posts}/>
+    
+        )
+    }
+    else{
+location.push("/login")
+return null
+    }
+    
 }
 
 export default Home

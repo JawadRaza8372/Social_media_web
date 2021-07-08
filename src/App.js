@@ -30,12 +30,8 @@ function App() {
 
       
 },[]);     
-
   return (
     <div className="app">
-    
-
-
     <Routesss suser={suser} Data={Data}/>
     
 

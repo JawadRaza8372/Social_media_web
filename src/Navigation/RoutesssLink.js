@@ -5,6 +5,8 @@ import ProfilePage from "../Screens/ProfilePage"
 import Passwordupdate from "../Screens/Passwordupdate"
 import ProfilePhoto from '../Screens/ProfilePhoto'
 import InfoUpdate from '../Screens/InfoUpdate'
+import LoginPage from '../Screens/LoginPage'
+import SignUpPage from '../Screens/SignUpPage'
 function RoutesssLink({suser,Datas}) {
   
     return (
@@ -12,7 +14,10 @@ function RoutesssLink({suser,Datas}) {
 
         <>
          <Switch>
-             <Route exact={true} path="/home" component={Home}/>
+             <Route exact={true} path="/home" render={() => (<Home user={suser}/>)}/>
+             <Route exact={true} path="/signup" render={() => (<SignUpPage user={suser}/>)}/>
+             <Route exact={true} path="/login" render={() => (<LoginPage user={suser}/>)}/>
+
              <Route exact={true} path="/">
     <Redirect to="/home" />
 </Route>

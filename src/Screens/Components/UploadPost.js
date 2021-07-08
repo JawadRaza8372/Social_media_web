@@ -1,7 +1,10 @@
 import React,{useEffect, useState} from 'react'
 import FileUploader from 'react-firebase-file-uploader';
+import { useHistory } from 'react-router-dom';
 import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
 function UploadPost({userinfo}) {
+  let location=useHistory()
+
     const [state, setstate] = useState({caption:'',img:""});
     const [fs,setf]=useState(null);
     const [suser,setuser]=useState(null);
@@ -18,24 +21,17 @@ function UploadPost({userinfo}) {
             const submit=(e)=>{
                 e.preventDefault();
         console.log(state);
-              auth.onAuthStateChanged((user) => {
-                if (user) {
-                  var uid = user.uid;
-                    console.log(uid);
-                    setuser(user.uid);
                     db.collection('posts').add({
-                        postedBy:uid,
-                        avat:userinfo.img,
-                        username:userinfo.firstname+" "+userinfo.lastname,
+                        postedBy:userinfo,
                         caption:state.caption,
                         postimg:state.img
-                    }).then(()=>console.log("------datasaved--posted---")).catch((error)=>{console.log("ufff")})
-                } else {
-                    console.log("------datasave--error---");
-              }});
-            }
+                    }).then(()=>location.push('/')).catch((error)=>{console.log("ufff")})
+
+                  }
                            
 const handleUploadSuccess = filename => {
+  setf("pending");
+
                         storage.ref("images") 
                           .child(filename)
                           .getDownloadURL()
@@ -74,12 +70,14 @@ useEffect(()=>{
             storageRef={
               storage.ref("images")
             }
+            accept="image/*"
             onUploadStart = {null}
             onUploadError = {handleUploadError}
             onUploadSuccess = {handleUploadSuccess}
             onProgress = {null}
           /></div>
-          {(fs==="done")?<p className="blacksimpletxt">Profile Picture Status:Uploaded</p>:null}
+          { fs && <p className="blacksimpletxt mt-3 mb-3">Profile Picture Status{(fs==="done")?": uploaded":": pending"}</p>
+}
 
   <br/>
   <button type="submit"  className="btn bttn btn-outline-primary">Upload Post</button>

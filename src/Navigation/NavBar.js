@@ -1,42 +1,25 @@
-import React,{useState,useEffect} from "react";
+import React,{useState} from "react";
 import Avatar from "@material-ui/core/Avatar";
-import { Button } from "@material-ui/core";
-import SignUp from "../Screens/Components/SignUp";
-import Login from "../Screens/Components/Login";
 import UploadPost from "../Screens/Components/UploadPost";
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import HomeIcon from '@material-ui/icons/Home';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import ModelP from "../Screens/Components/ModelP"
 import DropdownP from "../Screens/Components/DropDownP"
 import {Navbar,Nav} from "react-bootstrap"
-import Notification from "../Screens/Components/Notification"
 import {NavLink} from "react-router-dom"
 function NavBar({suser,Data}) {
-    const [open, setOpen] =useState(false);
-    const [open2, setOpen2] =useState(false);
     const [open3, setOpen3] =useState(false);
     const [open4, setOpen4] =useState(false);
     return (
         <>
-        <ModelP openModel={open} closeModel={()=>{setOpen(false)}} >
-    <SignUp/>
-    </ModelP>
-
-{/* model 2 login wala */}
-<ModelP openModel={open2} closeModel={()=>{setOpen2(false)}} >
-<Login/>
-    </ModelP>
 
 {/* model 3 post wala */}
 <ModelP openModel={open3} closeModel={()=>{setOpen3(false)}} >
-<UploadPost userinfo={Data}/>
+<UploadPost userinfo={suser}/>
     </ModelP>
 {/* model 4 notificationWala */}
 
-    <ModelP openModel={open4} closeModel={()=>{setOpen4(false)}} >
-<Notification/>
-    </ModelP>
+ 
 
     <div className="app_header">
     <div className="row justify-content-center">
@@ -50,17 +33,13 @@ function NavBar({suser,Data}) {
   <Navbar.Collapse id="responsive-navbar-nav">
   <Nav style={{marginLeft:"auto"}}>
    
-   {(suser===null)?<><Button  onClick={()=>{setOpen(true)}}>Sign Up</Button>
-     <Button  onClick={()=>{setOpen2(true)}}>Login</Button></>
-     : <>
+   {(suser===null)? <h5 style={{alignSelf:"center",color:"red"}}>Please Login</h5> : <>
      <NavLink style={{color:"black"}} to="/">
 <HomeIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></NavLink>
 
 <a   onClick={()=>{setOpen3(true)}}>
 <AddBoxIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></a>
 
-<a   onClick={()=>{setOpen4(true);console.log("clicked"+open)}}>
-<NotificationsIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></a>
 <DropdownP>
 <Avatar style={{height:"32px",marginLeft:"5px"}}  src={`${Data.img}`} alt={`${Data.firstname}`}/>
 </DropdownP>
