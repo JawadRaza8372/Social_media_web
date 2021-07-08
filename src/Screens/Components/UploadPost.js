@@ -1,13 +1,11 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import FileUploader from 'react-firebase-file-uploader';
 import { useHistory } from 'react-router-dom';
 import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
 function UploadPost({userinfo}) {
   let location=useHistory()
-
-    const [state, setstate] = useState({caption:'',img:""});
+const [state, setstate] = useState({caption:'',img:""});
     const [fs,setf]=useState(null);
-    const [suser,setuser]=useState(null);
     const handlein=(e)=>{
         const name=e.target.id;
         const value=e.target.value;
@@ -46,17 +44,7 @@ setf("done");
                         console.error(error);
                     };
                     
-useEffect(()=>{
-    auth.onAuthStateChanged((user) => {
-        if (user) {
-          var uid = user.uid;
-            console.log(uid);
-            setuser(user.uid);
-        } else {
-            setuser(null);
-            console.log("logged -in");
-      }});
-},[]);                      
+                  
     return (
         <form onSubmit={submit}>
 <h1 className="blacksimpletxt" style={{color:"#0d6efd",textAlign:"center"}}>Share Your Memories</h1><br/>
