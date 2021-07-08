@@ -5,37 +5,13 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import BookmarkBorderOutlinedIcon from '@material-ui/icons/BookmarkBorderOutlined';
 import BookmarkOutlinedIcon from '@material-ui/icons/BookmarkOutlined';
-import { makeStyles } from '@material-ui/core/styles';
 import ModelP from "./ModelP"
 import {db} from "../../FirebaseConfig/FirebaseConfig"
-function getModalStyle() {
-    const top = 50;
-    const left = 50;
-  
-    return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
-    };
-  }
-  
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      position: 'absolute',
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  }));
 function Post({userid,postimg,caption}) {
     const [likeed, setlikeed] = useState("");
     const [saveed, setsaveed] = useState("");
     const [userData, setuserData] = useState(null);
     const [open, setOpen] =useState(false);
-    const classes=useStyles();
-    const [modalStyle]=useState(getModalStyle);
     console.log(userData)
     let fetch=async ()=>{
       let result=await db.collection("users").doc(userid).get();
