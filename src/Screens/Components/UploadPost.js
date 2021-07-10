@@ -22,7 +22,9 @@ const [state, setstate] = useState({caption:'',img:""});
                     db.collection('posts').add({
                         postedBy:userinfo,
                         caption:state.caption,
-                        postimg:state.img
+                        postimg:state.img,
+                        posttime:new Date(),
+                        likes:[],
                     }).then(()=>location.push('/')).catch((error)=>{console.log("ufff")})
 
                   }

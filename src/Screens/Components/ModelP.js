@@ -15,7 +15,7 @@ function getModalStyle() {
   const useStyles = makeStyles((theme) => ({
     paper: {
       position: 'absolute',
-      width: 400,
+      width: 'auto',
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
@@ -33,13 +33,9 @@ open={openModel}
 onClose={closeModel}
 >
    <div style={modalStyle} className={classes.paper}>
-<center>
-<div className="app_header">
-      <img className="app_headerImg" src="http://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo"/>
-    </div>
+<br/>
 {children}
 <br/>
-    </center>
     </div>
 </Modal>
     )

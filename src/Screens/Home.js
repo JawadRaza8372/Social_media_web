@@ -5,7 +5,7 @@ import {db} from "../FirebaseConfig/FirebaseConfig"
 function Home({user}) {
     const [posts, setposts] = useState(null)
     useEffect(()=>{
-        db.collection("posts").onSnapshot((snapshot)=>{
+        db.collection("posts").orderBy('posttime','desc').onSnapshot((snapshot)=>{
             setposts(snapshot.docs.map(doc=>(({id:doc.id,post:doc.data()}))))
           })
         },[]);
@@ -13,7 +13,7 @@ function Home({user}) {
     console.log(user)
     if(user){
         return (
-            <PostScreen post={posts}/>
+            <PostScreen currentuser={user} post={posts}/>
     
         )
     }

@@ -30,7 +30,10 @@ function SignUp() {
                         password:state.password,
                         firstname:state.firstname,
                         lastname:state.lastname,
-                        img:state.img
+                        img:state.img,
+                        posts:'0',
+                        followers:[],
+                        following:[]
                     })
                 } else {
                     console.log("   ------datasave--error---");

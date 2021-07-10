@@ -13,6 +13,9 @@ function Routesss({suser,Data}) {
   </>:(location.match("/Profile"))?
   <> <NavBar suser={suser} Data={Data}/>
                <RoutesssLink suser={suser} Datas={Data}/>
+  </>:(location.match("/search"))?
+  <> <NavBar suser={suser} Data={Data}/>
+               <RoutesssLink suser={suser} Datas={Data}/>
   </>:(location.match("/login"))?
   <> <NavBar suser={suser} Data={Data}/>
                <RoutesssLink suser={suser} Datas={Data}/>

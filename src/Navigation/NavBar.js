@@ -7,6 +7,7 @@ import ModelP from "../Screens/Components/ModelP"
 import DropdownP from "../Screens/Components/DropDownP"
 import {Navbar,Nav} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
+import SearchIcon from '@material-ui/icons/Search';
 function NavBar({suser,Data}) {
     const [open3, setOpen3] =useState(false);
     const [open4, setOpen4] =useState(false);
@@ -39,7 +40,8 @@ function NavBar({suser,Data}) {
 
 <a   onClick={()=>{setOpen3(true)}}>
 <AddBoxIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></a>
-
+<NavLink style={{color:"black"}} to="/search">
+<SearchIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></NavLink>
 <DropdownP>
 <Avatar style={{height:"32px",marginLeft:"5px"}}  src={`${Data.img}`} alt={`${Data.firstname}`}/>
 </DropdownP>
