@@ -25,6 +25,8 @@ const [state, setstate] = useState({caption:'',img:""});
                         postimg:state.img,
                         posttime:new Date(),
                         likes:[],
+                        comments:[]
+
                     }).then(()=>location.push('/')).catch((error)=>{console.log("ufff")})
 
                   }

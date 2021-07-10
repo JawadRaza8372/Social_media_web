@@ -35,16 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Post({crntuser,userid,postimg,caption,likes,comments}) {
+function Post({postid,crntuser,userid,postimg,caption,likes,comments}) {
+  const [Likess, setLikess] = useState(likes)
   const classes = useStyles();
-  console.log("curent user")
-console.log(crntuser)
 const [bgColor, setbgColor] = useState("transparent");
   const [likeed, setlikeed] = useState("");
     const [saveed, setsaveed] = useState("");
     const [userData, setuserData] = useState(null);
     const [open, setOpen] =useState(false);
-    console.log(userData)
     let fetch=async ()=>{
       let result=await db.collection("users").doc(userid).get();
       setuserData(result.data())
@@ -58,6 +56,55 @@ const [bgColor, setbgColor] = useState("transparent");
       let z = 50+ Math.floor(Math.random() * 256);
       setbgColor("rgb(" + x + "," + y + "," + z + ")")
     }, [])
+    let updatefunction=async()=>{
+     await db.collection('posts').doc(postid).update({likes:Likess}).then(()=>{
+        console.log("done")
+      })
+    }
+    let likepushFunction=()=>{
+
+      if (likes.length !== 0){
+       let check= likes.find((userlike)=> userlike === crntuser)
+       if(check){
+        console.log('nothing')
+       }
+       else{
+        updatefunction()
+       }
+       
+      }
+      else{
+        console.log(Likess)
+        updatefunction()
+      }
+        
+       
+     
+    }
+    let likeeFunction=async()=>{
+    setLikess(()=>[
+            ...likes,
+            crntuser
+        ]
+    )
+    likepushFunction()
+    }
+    
+    let unlikepushFunction=()=>{
+      updatefunction()
+    }
+    let unlikeeFunction=async()=>{
+      
+     let unlike=likes.filter((lik)=>lik !== crntuser);
+     setLikess(unlike)
+      unlikepushFunction()
+    }
+
+
+   
+
+
+
    if(userData){
     return (
         <div style={{maxWidth:"500px",backgroundColor:"white",border:"1px solid lightgrey",marginBottom:"45px",overflow:"hidden"}}>
@@ -76,18 +123,32 @@ const [bgColor, setbgColor] = useState("transparent");
         subheader={userData.email}
       />
        
-          {(postimg && caption)?<a  onDoubleClick={()=>{setlikeed("liked")}}><img style={{width:"100%",objectFit:"contain",borderBottom:"1px solid lightgrey",borderTop:"1px solid lightgrey"}} src={`${postimg}`} alt="pics"/>
+          {(postimg && caption)?<a onDoubleClick={likeeFunction}><img style={{width:"100%",objectFit:"contain",borderBottom:"1px solid lightgrey",borderTop:"1px solid lightgrey"}} src={`${postimg}`} alt="pics"/>
           </a>:null}
-          {((!postimg) && (caption))?<div  onDoubleClick={()=>{setlikeed("liked")}} style={{width:"100%",height:"250px",display:"grid",placeItems:"center",overflowY:"auto",overflowX:"hidden",borderBottom:"1px solid lightgrey",borderTop:"1px solid lightgrey",background:bgColor}} ><p className="caption">{caption}</p></div>:null}
+          {((!postimg) && (caption))?<div onDoubleClick={likeeFunction} style={{width:"100%",height:"250px",display:"grid",placeItems:"center",overflowY:"auto",overflowX:"hidden",borderBottom:"1px solid lightgrey",borderTop:"1px solid lightgrey",background:bgColor}} ><p className="caption">{caption}</p></div>:null}
           <div className="row">
       <div className="col col-8">
       <div style={{display:"flex",flexDirection:"row",float:"left"}}>
-      {(likeed==="liked")?   <a style={{margin:"10px"}} onClick={()=>{setlikeed("")}}><FavoriteIcon style={{color:"red",fontSize:"30"}}/></a>: <a style={{margin:"10px"}} onClick={()=>{setlikeed("liked")}}><FavoriteBorderIcon style={{fontSize:"30"}}/></a>}
-<a style={{margin:"10px"}} onClick={()=>console.log("clicked")}>
-<ChatOutlinedIcon style={{fontSize:"30"}}/></a></div></div>
+      
+      
+      
+      
+      {
+       (likes.find((userlike)=> userlike === crntuser))? (<IconButton   onClick={unlikeeFunction}><FavoriteIcon style={{color:"red",fontSize:"30"}}/></IconButton>)
+       :( <IconButton  onClick={likeeFunction}><FavoriteBorderIcon style={{fontSize:"30"}}/></IconButton>)
+       
+       }
+
+      
+
+
+
+
+<IconButton onClick={()=>console.log("clicked")}>
+<ChatOutlinedIcon style={{fontSize:"30"}}/></IconButton></div></div>
       <div className="col col-4">
       <div style={{display:"flex",flexDirection:"row",float:"right"}}>
-     { (saveed==="saved")?<a style={{margin:"10px"}} onClick={()=>{setsaveed("")}}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></a>: <a style={{margin:"10px"}} onClick={()=>{setsaveed("saved")}}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></a>
+     { (saveed==="saved")?<IconButton onClick={()=>{setsaveed("")}}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></IconButton>: <IconButton onClick={()=>{setsaveed("saved")}}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></IconButton>
 }
       
         </div></div></div>

@@ -10,7 +10,7 @@ function PosterUser({Data,title,subtitle}) {
         </div>
 <div style={{alignItems:"center",paddingTop:"10px",paddingBottom :"10px"}} className="col-xs-10 col-sm-10 col-md-6 col-lg-8 col-xl-8 order-2">
     <h6>Name</h6>
-    <h7>description</h7>
+    <p>description</p>
 </div>
         </div></div>
     )

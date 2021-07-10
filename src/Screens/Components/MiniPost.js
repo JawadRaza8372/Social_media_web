@@ -30,7 +30,7 @@ function MiniPost({crntuser,data}) {
 </a>
 </div></div>
 <ModelP openModel={open} closeModel={()=>{setopen(false)}}>
-<Post crntuser={crntuser} userid={data.post.postedBy} postimg={data.post.postimg} caption={data.post.caption} likes={data.post.likes} comments={data.post.comments}/>
+<Post postid={data.id} crntuser={crntuser} userid={data.post.postedBy} postimg={data.post.postimg} caption={data.post.caption} likes={data.post.likes} comments={data.post.comments}/>
 </ModelP>
 </>
     )
