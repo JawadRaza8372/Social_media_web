@@ -36,13 +36,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Post({postid,crntuser,userid,postimg,caption,likes,comments}) {
-  const [Likess, setLikess] = useState(likes)
-  const classes = useStyles();
-const [bgColor, setbgColor] = useState("transparent");
-  const [likeed, setlikeed] = useState("");
-    const [saveed, setsaveed] = useState("");
-    const [userData, setuserData] = useState(null);
-    const [open, setOpen] =useState(false);
+  let [Likess, setLikess] = useState(likes)
+let [bgColor, setbgColor] = useState("transparent");
+  let [likeed, setlikeed] = useState("");
+    let [saveed, setsaveed] = useState("");
+    let [userData, setuserData] = useState(null);
+    let [open, setOpen] =useState(false);
     let fetch=async ()=>{
       let result=await db.collection("users").doc(userid).get();
       setuserData(result.data())
@@ -74,7 +73,6 @@ const [bgColor, setbgColor] = useState("transparent");
        
       }
       else{
-        console.log(Likess)
         updatefunction()
       }
         
@@ -82,12 +80,13 @@ const [bgColor, setbgColor] = useState("transparent");
      
     }
     let likeeFunction=async()=>{
-    setLikess(()=>[
-            ...likes,
-            crntuser
-        ]
-    )
-    likepushFunction()
+      if(Likess.find(likd=> likd===crntuser)){console.log("nothing")}
+      else{
+        Likess=[...likes,crntuser]
+        likepushFunction()
+      }
+   
+      
     }
     
     let unlikepushFunction=()=>{
@@ -96,7 +95,7 @@ const [bgColor, setbgColor] = useState("transparent");
     let unlikeeFunction=async()=>{
       
      let unlike=likes.filter((lik)=>lik !== crntuser);
-     setLikess(unlike)
+     Likess=unlike;
       unlikepushFunction()
     }
 

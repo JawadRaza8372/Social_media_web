@@ -26,19 +26,17 @@ function PosterUserWthBtn() {
       
 },[]);     
     return (
-        <div  className="col-10">
         <div style={{display:"flex",alignItems:"center"}} className="row mt-2 mb-2">
         <div className="col-3 mr-1">
         <Avatar style={{height:"50px",width:"50px",marginLeft:"5px"}}  src={`${Data.img}`} alt={`${Data.firstname}`}/>
         </div>
-<div style={{alignItems:"center",paddingTop:"10px",paddingBottom :"10px"}} className="col-6">
+<div style={{alignItems:"center",paddingTop:"10px",paddingBottom :"10px"}} className="col-6 mr-1">
     <h6 style={{fontSize:"auto"}}>{Data.firstname} {Data.lastname}</h6>
-    <p style={{fontSize:"auto"}}>{Data.email}</p>
+    <p>{Data.email}</p>
 </div>
-  <div className="col-2 ml-2">
-<a onClick={()=>{auth.signOut();}}><BtTxtPic  icon4="g"/></a>
+  <div className="col-3">
+<a style={{float:'right'}} onClick={()=>{auth.signOut();}}><BtTxtPic  icon4="g"/></a>
   </div>
-        </div>
         </div>
     )
 }
