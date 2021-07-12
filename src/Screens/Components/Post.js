@@ -10,38 +10,45 @@ import {db} from "../../FirebaseConfig/FirebaseConfig"
 import CardHeader from '@material-ui/core/CardHeader';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: 'red',
-  },
-}));
+import SendIcon from '@material-ui/icons/Send';
+import Comment from './Comment';
 
 function Post({postid,crntuser,userid,postimg,caption,likes,comments}) {
   let [Likess, setLikess] = useState(likes)
 let [bgColor, setbgColor] = useState("transparent");
-  let [likeed, setlikeed] = useState("");
-    let [saveed, setsaveed] = useState("");
+  let [Coments, setComents] = useState(comments);
+  let [inputv, setinputv] = useState({user:crntuser,comment:'',sendDate:new Date().toDateString(),sendTime:new Date().toLocaleTimeString()});
+
     let [userData, setuserData] = useState(null);
     let [open, setOpen] =useState(false);
+    let [saveed, setsaveed] = useState(null);
+
+    let savepost=async()=>{
+        saveed=[...saveed,postid]
+        await db.collection('users').doc(crntuser).update({save:saveed}).then(()=>{
+          console.log('saved the post')
+        }
+        )
+      
+    }
+    let unsavepost=async()=>{
+      let unsave=saveed.filter((lik)=>lik !== postid);
+     saveed=unsave
+    await db.collection('users').doc(crntuser).update({save:saveed}).then(()=>{
+      console.log('unsaved the post')
+    }
+    )
+    }
+    useEffect(() => {
+      db.collection('users').doc(crntuser).onSnapshot(doc=>{
+        setsaveed(doc.data().save)})
+    }, [])
+    let comentSubmit=(e)=>{
+      e.preventDefault();
+      Coments=[...comments,inputv]
+      db.collection("posts").doc(postid).update({comments:Coments}).then(()=>console.log('poted'))
+      inputv.comment=''
+    }
     let fetch=async ()=>{
       let result=await db.collection("users").doc(userid).get();
       setuserData(result.data())
@@ -143,22 +150,45 @@ let [bgColor, setbgColor] = useState("transparent");
 
 
 
-<IconButton onClick={()=>console.log("clicked")}>
+<IconButton onClick={()=>setOpen(true)}>
 <ChatOutlinedIcon style={{fontSize:"30"}}/></IconButton></div></div>
       <div className="col col-4">
+      
       <div style={{display:"flex",flexDirection:"row",float:"right"}}>
-     { (saveed==="saved")?<IconButton onClick={()=>{setsaveed("")}}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></IconButton>: <IconButton onClick={()=>{setsaveed("saved")}}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></IconButton>
-}
+      {(saveed)?saveed.find(sav=> sav === postid )?
+        <IconButton onClick={unsavepost}><BookmarkOutlinedIcon style={{color:"grey",fontSize:"30"}}/></IconButton>
+        :   <IconButton onClick={savepost}><BookmarkBorderOutlinedIcon style={{fontSize:"30"}}/></IconButton>:null
+
+      }
+  
+
       
         </div></div></div>
 
       <p style={{fontSize:"12px",marginLeft:'5px',marginRight:"5px",textAlign:"left"}}>{likes.length} likes</p>
       {((postimg) && (caption))? <p  style={{marginLeft:'10px',marginRight:"5px",textAlign:"left"}}><strong>{userData.firstname+" "+userData.lastname}:</strong> {caption}</p>:null}
-      <ModelP openModel={open} closeModel={()=>{setOpen(false)}} >
-<div style={{flexDirection:"row"}}>
-    <input style={{width:'80%',marginRight:"10px"}}/>
-    <a onClick={()=>{console.log("commented")}} className="btn btn-outline-success">Post</a>
-    </div>
+      <ModelP openModel={open} closeModel={()=>{setOpen(false)}}><>
+      <div style={{height:"500px",overflowY:"auto",overflowX:'hidden'}}>
+{comments && comments.map((comtdt,index)=>(<Comment key={index} commenteddata={comtdt}/>
+))
+
+}
+      
+      </div><center>
+      <div style={{width:"320px"}}>
+      <form className="myform" onSubmit={comentSubmit} style={{border:'1px solid green'}}>
+<div  className="row">
+            <div className="col-xl-8 col-lg-8 col-md-8 col-sm-10 col-xs-10" style={{alignItems:"flex-start"}} >
+            <input type="text" value={inputv.comment} onChange={e=>setinputv({...inputv,comment:e.target.value})}  placeholder="Enter Email To Search" style={{width:"80%",height:'40px',outlineWidth:"0px",border:"none",paddingLeft:"10px",marginLeft:"10px"}} />
+            </div>            
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-10 col-xs-10" >
+<button type="submit" className="btn btn-outline-success"><SendIcon/></button>
+</div></div>
+    </form>
+      </div>
+      </center>
+      
+</>
     </ModelP>
           
          

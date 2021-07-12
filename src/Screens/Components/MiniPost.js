@@ -11,7 +11,6 @@ function MiniPost({crntuser,data}) {
       let z = 50+ Math.floor(Math.random() * 256);
       setbgColor("rgb(" + x + "," + y + "," + z + ")")
     }, [])
-    console.log(data)
     return (
       <>
      <div className="col-lg-4 col-xl-4 col-md-6 col-sm-10 col-xs-10">

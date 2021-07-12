@@ -5,13 +5,18 @@ import MiniPost from "./Components/MiniPost";
 import {Navbar,Nav} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
 import {db} from "../FirebaseConfig/FirebaseConfig"
+import ProfilePosts from './Components/ProfilePosts';
+import ProfileSve from './Components/ProfileSve';
 function ProfilePage({user,Data}) {
     const [posts, setposts] = useState(null)
+    const [posttype, setposttype] = useState('1')
+
     useEffect(()=>{
         db.collection("posts").orderBy('posttime','desc').onSnapshot((snapshot)=>{
             setposts(snapshot.docs.map(doc=>(({id:doc.id,post:doc.data()}))))
           }) 
         },[]);
+
       if(Data){
         return (
             <div className="col-8 mx-auto mt-4">
@@ -53,18 +58,15 @@ function ProfilePage({user,Data}) {
     
             <div  className="app_header2 overflow-hidden">
         <div style={{display:"flex",justifyContent:'center'}}>
-          <div style={{padding:"15px",cursor:"pointer"}} className="justhover"><BtTxtPic text="Posts" icon5="g"/></div>
-          <div style={{padding:"15px",cursor:"pointer"}} className="justhover"><BtTxtPic text="Saved" icon3="g"/></div>
+          <div style={{padding:"15px",cursor:"pointer"}} onClick={()=>setposttype('1')} className="justhover"><BtTxtPic text="Posts" icon5="g"/></div>
+          <div style={{padding:"15px",cursor:"pointer"}} onClick={()=>setposttype('2')} className="justhover"><BtTxtPic text="Saved" icon3="g"/></div>
         </div>
             </div>
     
     <div className="row mt-3">
-        {posts && posts.map((postdat)=>{
-        if (postdat.post.postedBy === user){
-            return (
-            <MiniPost crntuser={user} data={postdat} key={postdat.id}/>)
-        }})
-        }
+    {(posttype ==='1')?<ProfilePosts posts={posts} user={user}/>:<ProfileSve posts={Data.save}/>}
+      
+      
         
     </div>
     

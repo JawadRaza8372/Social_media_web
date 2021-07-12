@@ -86,15 +86,15 @@ code {
   /* text-shadow:2px 0 0 #FFFFFF, 0 -1px 0 #FFFFFF, 0 1px 0 #FFFFFF, -1px 0 0#FFFFFF; */
 }
 
-form {
-  padding: 20px;
-  margin-top: 60px;
+.myform {
+  padding: 10px;
+  margin-top: 30px;
   border: white solid 1px;
   border-radius: 25px;
   font-family: "Hind", sans-serif;
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-form:hover {
+.myform:hover {
   box-shadow: 0px 30px 12px -8px rgba(0, 0, 0, 0.2);
   transform: scale(1.05, 1.05);
   font-family: "Hind", sans-serif;
@@ -109,4 +109,77 @@ form:hover {
   text-decoration: none !important;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.rightdiv {
+  position: relative;
+  background: #0275d8;
+  text-align: right;
+  color: white !important;
+  min-width: 55%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #0275d8;
+  float: right;
+  right: 20px;
+  margin-bottom: 10px;
+}
+.rightdiv::before {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: -1px;
+  right: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid #0275d8;
+}
+
+.rightdiv::after {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: 0px;
+  right: -8px;
+  border: 10px solid transparent;
+  border-top: 10px solid #0275d8;
+  clear: both;
+}
+.chatContainer{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height:610px;
+  width:100%;
+  overflow-x:"hidden";
+  overflow-y:'auto'
+}
+.leftdiv {
+  position: relative;
+  background: #d0cfca;
+  text-align: left;
+  min-width: 55%;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #d0cfca;
+  float: left;
+  left: 20px;
+  margin-bottom: 10px;
+}
+.leftdiv::before {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: -1px;
+  left: -10px;
+  border: 10px solid transparent;
+  border-top: 10px solid #d0cfca;
+}
+
+.leftdiv::after {
+  content: '';
+  position: absolute;
+  visibility: visible;
+  top: 0px;
+  left: -8px;
+  border: 10px solid transparent;
+  border-top: 10px solid #d0cfca;
+  clear: both;
 }

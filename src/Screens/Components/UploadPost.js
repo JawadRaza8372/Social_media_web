@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import FileUploader from 'react-firebase-file-uploader';
 import { useHistory } from 'react-router-dom';
 import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
-function UploadPost({userinfo}) {
+function UploadPost({userinfo,userData}) {
   let location=useHistory()
 const [state, setstate] = useState({caption:'',img:""});
     const [fs,setf]=useState(null);
@@ -16,7 +16,7 @@ const [state, setstate] = useState({caption:'',img:""});
                 }
             })
         }
-            const submit=(e)=>{
+            const submit=async(e)=>{
                 e.preventDefault();
         console.log(state);
                     db.collection('posts').add({
@@ -27,7 +27,12 @@ const [state, setstate] = useState({caption:'',img:""});
                         likes:[],
                         comments:[]
 
-                    }).then(()=>location.push('/')).catch((error)=>{console.log("ufff")})
+                    }).then(()=>{
+                      let totlpost=parseInt(userData.posts)+1;
+                     db.collection('users').doc(userinfo).update({posts:`${totlpost}`}).then(()=>{
+                        location.push('/')
+                      })
+                     }).catch((error)=>{console.log(error)})
 
                   }
                            

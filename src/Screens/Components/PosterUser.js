@@ -9,8 +9,8 @@ function PosterUser({Data,title,subtitle}) {
         <Avatar style={{height:"50px",width:"50px"}}  src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt=""/>
         </div>
 <div style={{alignItems:"center",paddingTop:"10px",paddingBottom :"10px"}} className="col-xs-10 col-sm-10 col-md-6 col-lg-8 col-xl-8 order-2">
-    <h6>Name</h6>
-    <p>description</p>
+    <h6>{title}</h6>
+    <p>{subtitle}</p>
 </div>
         </div></div>
     )

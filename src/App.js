@@ -14,15 +14,13 @@ function App() {
         if (user) {
           var uid = user.uid;
             setuser(user.uid);
-            db.collection("users").doc(uid).get().then((doc) => {
+            db.collection("users").doc(uid).onSnapshot((doc) => {
                 if (doc) {
                     setData(doc.data());
                 } else {
                     console.log("No such document!");
                 }
-            }).catch(function(error) {
-                console.log("Error getting document:", error);
-            });
+            })
         } else {
             setuser(null);
             console.log("   ------datasave--error---");

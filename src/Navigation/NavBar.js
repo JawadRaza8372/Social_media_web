@@ -8,6 +8,7 @@ import DropdownP from "../Screens/Components/DropDownP"
 import {Navbar,Nav} from "react-bootstrap"
 import {NavLink} from "react-router-dom"
 import SearchIcon from '@material-ui/icons/Search';
+import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 function NavBar({suser,Data}) {
     const [open3, setOpen3] =useState(false);
     const [open4, setOpen4] =useState(false);
@@ -16,7 +17,7 @@ function NavBar({suser,Data}) {
 
 {/* model 3 post wala */}
 <ModelP openModel={open3} closeModel={()=>{setOpen3(false)}} >
-<UploadPost userinfo={suser}/>
+<UploadPost userinfo={suser} userData={Data}/>
     </ModelP>
 {/* model 4 notificationWala */}
 
@@ -37,7 +38,8 @@ function NavBar({suser,Data}) {
    {(suser===null)? <h5 style={{alignSelf:"center",color:"red"}}>Please Login</h5> : <>
      <NavLink style={{color:"black"}} to="/">
 <HomeIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></NavLink>
-
+<NavLink style={{color:"black"}} to={`/messages/${null}`}>
+<QuestionAnswerIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></NavLink>
 <a   onClick={()=>{setOpen3(true)}}>
 <AddBoxIcon style={{fontSize:"32",marginLeft:"5px",marginRight:"5px"}}/></a>
 <NavLink style={{color:"black"}} to="/search">

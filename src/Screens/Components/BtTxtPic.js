@@ -6,10 +6,13 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SettingsIcon from '@material-ui/icons/Settings';
+import IconButton from '@material-ui/core/IconButton';
+
 const design={color:"grey",fontSize:"26",marginLeft:"5px",marginRight:"5px"}
 const design2={color:"white",fontSize:"26",marginLeft:"5px",marginRight:"5px"}
 function BtTxtPic({text,text2,icon1,icon2,icon3,icon4,icon5,icon6,icon7}) {
     return (
+       <IconButton>
         <div style={{display:"flex",flexDirection:"row"}}>
           {icon1 && <AccountCircleIcon style={design}/>}
           {icon2 && <SettingsIcon style={design}/>}
@@ -24,6 +27,7 @@ function BtTxtPic({text,text2,icon1,icon2,icon3,icon4,icon5,icon6,icon7}) {
           { text2 &&<h6 style={{color:"white"}}>{text2}</h6>  }
 
         </div>
+       </IconButton> 
     )
 }
 

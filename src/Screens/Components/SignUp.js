@@ -33,7 +33,8 @@ function SignUp() {
                         img:state.img,
                         posts:'0',
                         followers:[],
-                        following:[]
+                        following:[],
+                        save:[]
                     })
                 } else {
                     console.log("   ------datasave--error---");
