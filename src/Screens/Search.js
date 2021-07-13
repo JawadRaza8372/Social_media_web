@@ -2,11 +2,14 @@ import React,{useState,useEffect} from 'react'
 import PosterUserFollowButton from './Components/PosterUserFollowButton';
 import {db} from "../FirebaseConfig/FirebaseConfig"
 
-function Search() {
+function Search({user}) {
     const [inputv, setinputv] = useState('');
     const [searchval, setsearchval] = useState('');
-
+const [chatnotif, setchatnotif] = useState(false);
     const [usersData, setusersData] = useState(null)
+    let enablenotif=()=>{
+        setchatnotif(true);
+    }
     let submitfun=(e)=>{
         e.preventDefault();
         setsearchval(inputv)
@@ -16,6 +19,12 @@ function Search() {
             setusersData(snapshot.docs.map(doc=>(({id:doc.id,post:doc.data()}))))
           })
         },[]);
+        useEffect(() => {
+            const interval = setInterval(() => {
+                setchatnotif(false)
+                }, 5000);
+            return () => clearInterval(interval);
+          }, [chatnotif]);
     return (
         <>
      <div className="col-xl-8 col-lg-8 col-md-10 col-sm-10 col-xs-10 mx-auto mt-4">
@@ -41,9 +50,9 @@ function Search() {
     {searchval && <h1>Results</h1>}
 <div className="row">
 <center>
-{usersData && usersData.map((user)=>{
-    if(user.post.email === searchval){
-        return (<PosterUserFollowButton key={user.id} userinfo={user.post} userId={user.id} />)
+{usersData && usersData.map((userd)=>{
+    if(userd.post.email === searchval){
+        return (<PosterUserFollowButton key={userd.id} userinfo={userd.post} userId={userd.id} curentUser={user} notif={enablenotif}/>)
     }
 })
 
@@ -52,7 +61,9 @@ function Search() {
 </center>
 </div>
 </div>
-
+{chatnotif && <div style={{position:"absolute",bottom:"400px",background:"green",color:"white",display:"grid",placeItems:"center",padding:"10px",height:"50px",borderRadius:"10px"}}>
+    <p>Added to Chat.You can have conversaion now.</p>
+</div>}
 
          
            </div>

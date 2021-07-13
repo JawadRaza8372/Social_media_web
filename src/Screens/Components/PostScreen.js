@@ -14,9 +14,9 @@ function PostScreen({currentuser,post}) {
            <div className="col d-none d-sm-none d-md-none d-lg-none d-xl-block col-lg-4 col-xl-4">
            <PosterUserWthBtn/>
            <p style={{color:"grey"}}>Suggestion For You</p>
+           {/* <PosterUser/>
            <PosterUser/>
-           <PosterUser/>
-           <PosterUser/>
+           <PosterUser/> */}
            </div> 
 
             </div>

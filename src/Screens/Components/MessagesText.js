@@ -1,22 +1,21 @@
 import React from 'react'
 
-function MessagesText() {
+function MessagesText({datas,curntuser}) {
+  console.log(datas)
     return (
         <>
-          <div className="leftdiv">
-          <div style={{display:'flex',justifyContent:'space-between',border:"none"}}>
-            <p style={{fontSize:"12px"}}>date</p>
-            <p style={{fontSize:"12px"}}>time</p>
+         {(datas.sender !== curntuser)? <div className="leftdiv">
+              <p style={{fontWeight:'bold'}}>{datas.message}</p>
+              <div style={{display:'flex',float:"right",border:"none"}}>
+            <p style={{fontSize:"10px"}}>{datas.senddate}</p>
           </div>
-              <p>text</p>
-          </div> 
+          </div>:
           <div className="rightdiv">
-          <div style={{display:'flex',justifyContent:'space-between',border:"none"}}>
-            <p style={{fontSize:"12px"}}>date</p>
-            <p style={{fontSize:"12px"}}>time</p>
+              <p style={{fontWeight:'bold'}}>{datas.message}</p>
+              <div style={{display:'flex',float:"left",border:"none"}}>
+            <p style={{fontSize:"10px"}}>{datas.senddate}</p>
           </div>
-              <p>text</p>
-          </div>
+          </div>}
         </>
     )
 }

@@ -6,9 +6,6 @@ function Passwordupdate() {
         <div className="col-8 ">
             <h4>Change Password</h4>
             <div className="form-group">
-            <input type="text"  className="form-control" placeholder="Enter Old Password" /></div>
-            <br/>
-            <div className="form-group">
             <input type="text"  className="form-control" placeholder="Enter New Password" /></div>
             <br/>
             <div className="form-group">

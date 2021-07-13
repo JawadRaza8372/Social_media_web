@@ -12,6 +12,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import IconButton from '@material-ui/core/IconButton';
 import SendIcon from '@material-ui/icons/Send';
 import Comment from './Comment';
+import DelatePostDropdown from './DelatePostDropdown';
 
 function Post({postid,crntuser,userid,postimg,caption,likes,comments}) {
   let [Likess, setLikess] = useState(likes)
@@ -22,6 +23,7 @@ let [bgColor, setbgColor] = useState("transparent");
     let [userData, setuserData] = useState(null);
     let [open, setOpen] =useState(false);
     let [saveed, setsaveed] = useState(null);
+    let [postsvalue, setpostsvalue] = useState(null);
 
     let savepost=async()=>{
         saveed=[...saveed,postid]
@@ -42,6 +44,10 @@ let [bgColor, setbgColor] = useState("transparent");
     useEffect(() => {
       db.collection('users').doc(crntuser).onSnapshot(doc=>{
         setsaveed(doc.data().save)})
+    }, [])
+    useEffect(() => {
+      db.collection('users').doc(crntuser).onSnapshot(doc=>{
+        setpostsvalue(doc.data().posts)})
     }, [])
     let comentSubmit=(e)=>{
       e.preventDefault();
@@ -119,14 +125,18 @@ let [bgColor, setbgColor] = useState("transparent");
           <Avatar style={{marginRight:"10px"}}  src={`${userData.img}`} alt={`${userData.firstname}`}/>
         }
         action={
-           (userid === crntuser)?
-            <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>:
+           ((postsvalue) && (userid === crntuser))?
+           <IconButton aria-label="settings">
+            <DelatePostDropdown postid={postid} postval={postsvalue} userid={crntuser}>
+   
+   <MoreVertIcon />
+  </DelatePostDropdown>
+           </IconButton>
+         :
         null
         }
-        title={userData.firstname+" "+userData.lastname}
-        subheader={userData.email}
+        title={userData.email}
+        subheader={userData.firstname+" "+userData.lastname}
       />
        
           {(postimg && caption)?<a onDoubleClick={likeeFunction}><img style={{width:"100%",objectFit:"contain",borderBottom:"1px solid lightgrey",borderTop:"1px solid lightgrey"}} src={`${postimg}`} alt="pics"/>

@@ -22,8 +22,8 @@ function RoutesssLink({suser,Datas}) {
     <Redirect to="/home" />
 </Route>
              <Route exact={true}   path="/Profile" render={() => (<ProfilePage user={suser} Data={Datas} />)}/> 
-             <Route exact={true}   path="/messages/:id" render={() => (<Messages/>)}/> 
-             <Route exact={true}   path="/search" component={Search}/>   
+             <Route exact={true}   path="/messages/:id" render={() => (<Messages user={suser}/>)}/> 
+             <Route exact={true}   path="/search" render={() => (<Search user={suser}/>)}/>   
              <Route exact={true}   path="/editinfo" render={() => (<InfoUpdate user={suser} Data={Datas} />)}/>  
              <Route exact={true}   path="/upadteProfilePhoto" render={() => (<ProfilePhoto user={suser} Data={Datas} />)}/>  
              <Route exact={true}   path="/changePassword" render={() => (<Passwordupdate user={suser} Data={Datas} />)}/>  
