@@ -10,7 +10,6 @@ function Home({user}) {
           })
         },[]);
     let location=useHistory();
-    console.log(user)
     if(user){
         return (
             <PostScreen currentuser={user} post={posts}/>

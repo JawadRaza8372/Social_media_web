@@ -1,7 +1,6 @@
 import React from 'react'
 
 function MessagesText({datas,curntuser}) {
-  console.log(datas)
     return (
         <>
          {(datas.sender !== curntuser)? <div className="leftdiv">

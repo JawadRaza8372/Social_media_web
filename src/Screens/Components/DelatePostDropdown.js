@@ -1,17 +1,13 @@
 import React from "react";
 import {Dropdown} from "react-bootstrap"
-import BtTxtPic from "./BtTxtPic"
-import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
+import {db} from "../../FirebaseConfig/FirebaseConfig";
 import { IconButton } from "@material-ui/core";
 
 function DelatePostDropdown({postid,postval,userid,children}) {
   let delfuntion=()=>{
-    console.log(postval)
     let newval=parseInt(postval)-1;
-    console.log('deleting')
     db.collection('posts').doc(postid).delete().then(()=>{
       db.collection('users').doc(userid).update({posts:`${newval}`}).then(()=>{
-        console.log('deleted')
       })
     })
 

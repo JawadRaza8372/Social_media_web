@@ -18,13 +18,11 @@ function SignUp() {
         }
             const submit=(e)=>{
                 e.preventDefault();
-        console.log(state);
 
             auth.createUserWithEmailAndPassword(state.email, state.password).then((user)=>{
               auth.onAuthStateChanged((user) => {
                 if (user) {
                   var uid = user.uid;
-                    console.log(uid);
                     db.collection("users").doc(uid).set({
                         email:state.email,
                         password:state.password,
@@ -74,7 +72,6 @@ useEffect(()=>{
     auth.onAuthStateChanged((user) => {
         if (user) {
           var uid = user.uid;
-            console.log(uid);
         } else {
             console.log("   ------datasave--error---");
       }});
@@ -83,21 +80,22 @@ useEffect(()=>{
         <form onSubmit={submit}>
 <h1 className="blacksimpletxt" style={{color:"#0d6efd",textAlign:"center"}}>Sign Up</h1><br/>
 <div className="form-group">
-    <input type="text" className="form-control" onChange={handlein} id="firstname" autoComplete="off" placeholder="Enter First Name"/>
+    <input type="text" className="form-control" minLength={3} onChange={handlein} id="firstname" autoComplete="off" placeholder="Enter First Name" required autoComplete="off"/>
   </div><br/>
   <div className="form-group">
-    <input type="text" className="form-control" onChange={handlein} id="lastname" autoComplete="off" placeholder="Enter Last Name"/>
+    <input type="text" className="form-control" minLength={3} onChange={handlein} id="lastname" autoComplete="off" placeholder="Enter Last Name" required autoComplete="off"/>
   </div><br/>
   <div className="form-group">
-    <input type="email" className="form-control" onChange={handlein} id="email" autoComplete="off" placeholder="Enter email"/>
+    <input type="email" className="form-control" onChange={handlein} id="email" autoComplete="off" placeholder="Enter email" required autoComplete="off"/>
   </div><br/>
   <div className="form-group">
-    <input type="password" className="form-control"  onChange={handlein} id="password" placeholder="Password"/>
+    <input type="password" className="form-control" minLength={6}  onChange={handlein} id="password" placeholder="Password" required autoComplete="off"/>
   </div>    
 <br/>
   <div className="form-group">
   <FileUploader className="component"
-            accept='*' name='avatar'
+            name='avatar'
+            required
             randomizeFilename
             storageRef={
               storage.ref("images")

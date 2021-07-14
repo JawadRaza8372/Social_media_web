@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react";
-import {auth, db} from "../../FirebaseConfig/FirebaseConfig";
+import {db} from "../../FirebaseConfig/FirebaseConfig";
 import Avatar from "@material-ui/core/Avatar";
-import BtTxtPic from './BtTxtPic';
 import { IconButton } from "@material-ui/core";
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 

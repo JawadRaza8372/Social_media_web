@@ -37,8 +37,7 @@ function MessagesContainer({roomid,curntuser,children}) {
             setinputval('')
         })
     }
-    console.log(userinfo)
-    console.log(roominfo)
+  
     if(userinfo && roominfo){
         return (
             <>

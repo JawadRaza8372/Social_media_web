@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import FileUploader from 'react-firebase-file-uploader';
 import { useHistory } from 'react-router-dom';
-import {storage,auth, db} from "../../FirebaseConfig/FirebaseConfig";
+import {storage,db} from "../../FirebaseConfig/FirebaseConfig";
 function UploadPost({userinfo,userData}) {
   let location=useHistory()
 const [state, setstate] = useState({caption:'',img:""});
@@ -18,7 +18,6 @@ const [state, setstate] = useState({caption:'',img:""});
         }
             const submit=async(e)=>{
                 e.preventDefault();
-        console.log(state);
                     db.collection('posts').add({
                         postedBy:userinfo,
                         caption:state.caption,
@@ -58,7 +57,7 @@ setf("done");
         <form onSubmit={submit}>
 <h1 className="blacksimpletxt" style={{color:"#0d6efd",textAlign:"center"}}>Share Your Memories</h1><br/>
 <div className="form-group">
-    <input type="text" className="form-control" onChange={handlein} id="caption" autoComplete="off" placeholder="Caption"/>
+    <input type="text" className="form-control" onChange={handlein} id="caption" minLength={2} autoComplete="off" placeholder="Caption"/>
   </div><br/>
   <div className="form-group">
   <FileUploader className="component"

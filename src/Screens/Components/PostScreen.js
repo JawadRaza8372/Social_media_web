@@ -1,5 +1,4 @@
 import React from 'react'
-import PosterUser from './PosterUser'
 import PostFetching from './PostFetching'
 import PosterUserWthBtn from './PosterUserWthBtn'
 

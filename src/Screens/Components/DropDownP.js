@@ -25,7 +25,6 @@ function DropDownP({children,data}) {
         </Dropdown.Toggle>
           <Dropdown.Menu  align="left">
           <Dropdown.Item href="/Profile"><BtTxtPic text="Profile" icon1="g" /></Dropdown.Item>
-            <Dropdown.Item href="/editinfo"><BtTxtPic text="Setting" icon2="g" /></Dropdown.Item>
             <Dropdown.Item onClick={()=>{auth.signOut();}}><BtTxtPic text="Logout" icon4="g" /></Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

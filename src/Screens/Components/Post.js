@@ -52,7 +52,7 @@ let [bgColor, setbgColor] = useState("transparent");
     let comentSubmit=(e)=>{
       e.preventDefault();
       Coments=[...comments,inputv]
-      db.collection("posts").doc(postid).update({comments:Coments}).then(()=>console.log('poted'))
+      db.collection("posts").doc(postid).update({comments:Coments}).then(()=>console.log('posted'))
       inputv.comment=''
     }
     let fetch=async ()=>{

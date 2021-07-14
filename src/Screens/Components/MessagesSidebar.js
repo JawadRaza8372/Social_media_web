@@ -6,7 +6,6 @@ function MessagesSidebar() {
     let location=useHistory();
     let [usrid, setusrid] = useState(null)
     let [chatroomData, setchatroomData] = useState(null)
-console.log(chatroomData)
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             setusrid(user.uid);

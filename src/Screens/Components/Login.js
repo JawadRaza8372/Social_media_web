@@ -17,16 +17,13 @@ function Login() {
         }
             const submit=(e)=>{
                 e.preventDefault();
-        console.log(state);
         auth.signInWithEmailAndPassword(
          state.email,
           state.password
         ).then(() => {
-          console.log('LOGIN_SUCCESS');
           location.push('/')
         }).catch((err) => {
-          console.log('LOGIN_failed');
-          setError("error")
+          setError(err.message)
         });
             }
                
@@ -45,10 +42,10 @@ function Login() {
     <input type="email" className="form-control" onChange={handlein} id="email" autoComplete="off" placeholder="Enter email" required autoComplete="off"/>
   </div><br/>
   <div className="form-group">
-    <input type="password" className="form-control"  onChange={handlein} id="password" placeholder="Password"  required autoComplete="off"/>
+    <input type="password" className="form-control" minLength={6}  onChange={handlein} id="password" placeholder="Password"  required autoComplete="off"/>
   </div>    
 <br/>
-{(Error)?<p style={{color:"red"}}>Login Failed</p>:null}
+{(Error)?<p style={{color:"red"}}>{Error}</p>:null}
   <button type="submit"  className="btn bttn btn-outline-primary mb-3">Login</button>
   <p onClick={()=>location.push('/signup')} style={{marginTop:"10px",cursor:"pointer"}}>Don't have an Account ??? SignUp</p>
 </form>

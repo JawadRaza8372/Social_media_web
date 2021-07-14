@@ -6,7 +6,6 @@ function Comment({commenteddata}) {
     const [user, setuser] = useState('')
 useEffect(() => {
     if(commenteddata){
-        console.log(commenteddata)
         db.collection('users').doc(commenteddata.user).get().then((doc)=>{
             setuser(doc.data())
           }) 

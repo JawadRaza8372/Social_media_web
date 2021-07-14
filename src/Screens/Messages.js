@@ -1,4 +1,3 @@
-import { CardHeader, IconButton,Avatar } from '@material-ui/core';
 import React,{useState,useEffect} from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import MessagesContainer from './Components/MessagesContainer';
@@ -13,7 +12,6 @@ function Messages({user}) {
             setmessages(snapshot.docs.map(doc=>((doc.data()))))
         })
     }, [])
-    console.log(messages)
     let location=useHistory()
     let {id}=useParams();
    if(user){ 

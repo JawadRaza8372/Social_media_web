@@ -1,27 +1,36 @@
 import React,{useState,useEffect} from 'react'
 import Avatar from "@material-ui/core/Avatar";
-import FileUploader from 'react-firebase-file-uploader';
-import {storage,auth, db} from "../FirebaseConfig/FirebaseConfig";
-import ModelP from "./Components/ModelP";
-function ProfilePhoto() {
-    const [state, setstate] = useState();
-    const [open, setOpen] =useState(false);
-
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
+import {storage,db} from "../FirebaseConfig/FirebaseConfig";
+import { useHistory } from 'react-router-dom';
+function ProfilePhoto({user,Data}) {
+    const [state, setstate] = useState(null);
+    const [errorMessage, seterrorMessage] = useState(null)
+    let location=useHistory();
     const [fs,setf]=useState(null);
+    let updatefunc=()=>{
+      db.collection('users').doc(user).update({img:state}).then(()=>{setf(null)})
+      }
+      useEffect(() => {
+        const interval = setInterval(() => {
+            seterrorMessage(null)
+            }, 5000);
+        return () => clearInterval(interval);
+      }, [errorMessage])
     const handleUploadSuccess = filename => {
         storage.ref("images") 
           .child(filename)
           .getDownloadURL()
           .then(url => { setstate(url);
-console.log("success");     
 setf("done");
         }
           );
       };
 
       const handleUploadError = error => {
-        console.error(error);
+        seterrorMessage(error);
     };
+    if (user){
     return (
         <div className=" row my-auto justify-content-center">
         <div className="col-8">
@@ -29,34 +38,38 @@ setf("done");
             <h4>Update Profile Photo</h4>
             <div style={{display:"flex",alignItems:"center"}} className="row mt-2 mb-2">
         <div className="mx-auto col-xs-10 col-sm-10 col-md-6 col-xl-4 col-lg-4 order-1">
-        <a onClick={()=>{setOpen(true)}}><Avatar style={{height:"180px",width:"180px"}}   src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&w=1000&q=80" alt=""/>
-        </a></div></div>
-<p>Click on photo to Update</p>
-</center>
-        </div>
         
-        <ModelP openModel={open} closeModel={()=>{setOpen(false)}} >
-     <h3>Upload Photo</h3>
-     <div className="form-group">
-  <FileUploader className="component"
-            accept='*' name='avatar'
+        <CustomUploadButton className="component"
+            accept='image/*' name='avatar'
             randomizeFilename
             storageRef={
               storage.ref("images")
             }
-            onUploadStart = {null}
+            onUploadStart = {()=>setf('Uploading on server')}
             onUploadError = {handleUploadError}
             onUploadSuccess = {handleUploadSuccess}
             onProgress = {null}
-          />
+          >
+           <Avatar style={{height:"180px",width:"180px"}}   src={Data.img} alt=""/>
+          </CustomUploadButton>
+        </div></div>
+<p>Click on photo to Update</p>
+{errorMessage && <div style={{background:"red",color:"white",display:"grid",placeItems:"center",padding:"10px",height:"50px",borderRadius:"10px"}}>
+            <p>{errorMessage}</p>
+        </div>}
+        {(fs)?(fs === 'Uploading on server')?<p>{fs}</p>:(fs === 'done')?<button onClick={updatefunc} className="btn btn-outline-success">Update</button>:null:null}
 
-          </div>
-          <p className="blacksimpletxt">Profile Picture Status:{(fs==="done")?"uploaded":null}</p>
-<button>Upload</button>
-     </ModelP>   
+</center>
+        </div>
+        
+     
        
         </div>
-    )
+    )}
+    else{
+      location.push('/')
+      return null;
+    }
 }
 
 export default ProfilePhoto
