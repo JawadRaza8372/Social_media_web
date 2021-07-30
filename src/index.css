@@ -151,6 +151,18 @@ code {
   overflow-x:"hidden";
   overflow-y:'auto'
 }
+.instabutton{
+  width: 70% !important;
+  height: 50px !important;
+  background-color: white !important;
+  border:none;
+  font-size: 20px;
+  font-weight: 600;
+}
+.instabutton:hover{
+  background-color: lightgray !important;
+  border-radius: 50px;
+}
 .leftdiv {
   position: relative;
   background: #d0cfca;

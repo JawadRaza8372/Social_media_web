@@ -3,7 +3,7 @@ import {auth, db} from "../../FirebaseConfig/FirebaseConfig";
 import Avatar from "@material-ui/core/Avatar";
 import BtTxtPic from './BtTxtPic';
 
-function PosterUserWthBtn() {
+function PosterUserWthBtn({notshow}) {
   
   const [Data, setData] = useState("");
  useEffect(()=>{
@@ -34,9 +34,9 @@ function PosterUserWthBtn() {
     <h6 style={{fontSize:"auto"}}>{Data.firstname} {Data.lastname}</h6>
     <p>{Data.email}</p>
 </div>
-  <div className="col-3">
+ {(!notshow) && <div className="col-3">
 <a style={{float:'right'}} onClick={()=>{auth.signOut();}}><BtTxtPic  icon4="g"/></a>
-  </div>
+  </div>}
         </div>
     )
 }

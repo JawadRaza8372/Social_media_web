@@ -11,8 +11,10 @@ function SignUpPage({user}) {
     else
     {
         return (
-            <div style={{display:"grid",placeItems:"center",height:"85vh"}}>
-                <SignUp/>
+            <div style={{display:"grid",placeItems:"center",height:"85vh",width:"100%"}}>
+                        <div style={{display:"flex",flexDirection:"row",alignItems:"center",alignSelf:'center',justifyContent:"space-between",minWidth:'40%',maxWidth:"60%"}}>
+
+                <SignUp/></div>
             </div>
         )
     }   

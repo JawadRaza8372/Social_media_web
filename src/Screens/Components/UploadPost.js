@@ -57,7 +57,7 @@ setf("done");
         <form onSubmit={submit}>
 <h1 className="blacksimpletxt" style={{color:"#0d6efd",textAlign:"center"}}>Share Your Memories</h1><br/>
 <div className="form-group">
-    <input type="text" className="form-control" onChange={handlein} id="caption" minLength={2} autoComplete="off" placeholder="Caption"/>
+    <input type="text" className="form-control" onChange={handlein} id="caption" minLength={2} autoComplete="off" placeholder="Caption" required/>
   </div><br/>
   <div className="form-group">
   <FileUploader className="component"
@@ -67,6 +67,7 @@ setf("done");
               storage.ref("images")
             }
             accept="image/*"
+            required
             onUploadStart = {null}
             onUploadError = {handleUploadError}
             onUploadSuccess = {handleUploadSuccess}
@@ -76,7 +77,10 @@ setf("done");
 }
 
   <br/>
-  <button type="submit"  className="btn bttn btn-outline-primary">Upload Post</button>
+  { fs && (fs==="done")? <button type="submit"  className="btn bttn btn-outline-primary">Upload Post</button>:null
+}
+
+ 
 </form>
 
     )

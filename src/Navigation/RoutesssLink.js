@@ -14,7 +14,7 @@ function RoutesssLink({suser,Datas}) {
     return (
         <>
          <Switch>
-             <Route exact={true} path="/home" render={() => (<Home user={suser}/>)}/>
+             <Route exact={true} path="/home" render={() => (<Home user={suser} Data={Datas}/>)}/>
              <Route exact={true} path="/signup" render={() => (<SignUpPage user={suser}/>)}/>
              <Route exact={true} path="/login" render={() => (<LoginPage user={suser}/>)}/>
 

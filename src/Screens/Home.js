@@ -2,7 +2,10 @@ import React,{useState,useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 import PostScreen from "./Components/PostScreen"
 import {db} from "../FirebaseConfig/FirebaseConfig"
-function Home({user}) {
+import ScrollToTop from "react-scroll-to-top";
+
+function Home({user,Data}) {
+ 
     const [posts, setposts] = useState(null)
     useEffect(()=>{
         db.collection("posts").orderBy('posttime','desc').onSnapshot((snapshot)=>{
@@ -11,10 +14,12 @@ function Home({user}) {
         },[]);
     let location=useHistory();
     if(user){
-        return (
-            <PostScreen currentuser={user} post={posts}/>
+        return (<>
+            <ScrollToTop style={{background:'#6f00ff'}} smooth color="white" />
+
+            <PostScreen currentuser={user} post={posts} userData={Data}/>
     
-        )
+        </>)
     }
     else{
 location.push("/login")

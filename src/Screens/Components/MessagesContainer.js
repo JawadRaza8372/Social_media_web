@@ -7,10 +7,20 @@ function MessagesContainer({roomid,curntuser,children}) {
     const [inputval, setinputval] = useState('')
     const [roominfo, setroominfo] = useState(null)
     const [userinfo, setuserinfo] = useState(null)
-    useEffect(() => {
-        db.collection('chatroom').doc(roomid).get().then((doc)=>{
+    let fetchsome=async()=>{
+       await  db.collection('chatroom').doc(roomid).get().then((doc)=>{
             setroominfo(doc.data())
         })
+    }
+    useEffect(() => {
+        console.log("start")
+        fetchsome()
+        console.log("start2")
+    }, [roomid])
+    useEffect(() => {
+        console.log("start")
+        fetchsome()
+        console.log("start2")
     }, [])
     useEffect(() => {
         if(roominfo){
@@ -37,7 +47,7 @@ function MessagesContainer({roomid,curntuser,children}) {
             setinputval('')
         })
     }
-  
+  if(roomid && roomid !== null && roomid !== "null"){
     if(userinfo && roominfo){
         return (
             <>
@@ -67,6 +77,15 @@ function MessagesContainer({roomid,curntuser,children}) {
             </>
         )
     }
+    else{
+        return (<div style={{display:"grid",placeItems:"center",height:"80vh"}}>
+        <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+        <h1>Loading</h1>
+        </div>
+        </div>)
+    }
+  }
+    
     else{
         return (<div style={{display:"grid",placeItems:"center",height:"80vh"}}>
         <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
