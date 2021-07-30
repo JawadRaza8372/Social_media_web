@@ -15,11 +15,9 @@ function NavBar({suser,Data}) {
     return (
         <>
 
-{/* model 3 post wala */}
 <ModelP openModel={open3} closeModel={()=>{setOpen3(false)}} >
 <UploadPost userinfo={suser} userData={Data}/>
     </ModelP>
-{/* model 4 notificationWala */}
 
  
 
