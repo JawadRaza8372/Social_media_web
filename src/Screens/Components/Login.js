@@ -101,7 +101,7 @@ function Login() {
       >
         <p
           onClick={() => location.push("/signup")}
-          style={{ marginTop: "10px", cursor: "pointer" }}
+          style={{ marginTop: "10px", cursor: "pointer", textAlign: "center" }}
         >
           Don't have an Account ???{" "}
           <span style={{ color: "#0d6efd", fontWeight: "bold" }}>SignUp</span>

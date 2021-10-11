@@ -9,6 +9,7 @@ import LoginPage from "../Screens/LoginPage";
 import SignUpPage from "../Screens/SignUpPage";
 import Search from "../Screens/Search";
 import Messages from "../Screens/Messages";
+import My404page from "../Screens/My404page";
 function RoutesssLink({ suser, Datas }) {
   return (
     <>
@@ -62,7 +63,7 @@ function RoutesssLink({ suser, Datas }) {
           path="/changePassword"
           render={() => <Passwordupdate user={suser} Data={Datas} />}
         />
-        <Route component={""} />
+        <Route component={My404page} />
       </Switch>
     </>
   );
